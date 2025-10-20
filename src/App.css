@@ -1,12 +1,10 @@
 @import "tailwindcss";
 @import "swiper/css";
 @import "swiper/css/pagination";
-body {
-  font-family: "Comic Relief", cursive !important;
-}
 /* Global Font */
 * {
-  font-family: "Comic Relief" !important;
+  /* font-family: "Comic Relief" !important; */
+  font-family: "Roboto", sans-serif !important;
 }
 
 /* Custom Animations */
@@ -211,32 +209,35 @@ body {
 
 /* Gentle text animations */
 @keyframes gentle-float {
-  0%, 100% { 
-    transform: translateY(0px); 
+  0%,
+  100% {
+    transform: translateY(0px);
   }
-  50% { 
-    transform: translateY(-3px); 
+  50% {
+    transform: translateY(-3px);
   }
 }
 
 @keyframes gentle-pulse {
-  0%, 100% { 
-    transform: scale(1); 
+  0%,
+  100% {
+    transform: scale(1);
   }
-  50% { 
-    transform: scale(1.02); 
+  50% {
+    transform: scale(1.02);
   }
 }
 
 @keyframes gentle-rotate {
-  0%, 100% { 
-    transform: rotate(0deg); 
+  0%,
+  100% {
+    transform: rotate(0deg);
   }
-  25% { 
-    transform: rotate(1deg); 
+  25% {
+    transform: rotate(1deg);
   }
-  75% { 
-    transform: rotate(-1deg); 
+  75% {
+    transform: rotate(-1deg);
   }
 }
 
@@ -253,7 +254,6 @@ body {
 }
 
 /* Swiper Custom Styles */
-
 
 .inspirational-swiper .swiper-pagination {
   bottom: 0;
