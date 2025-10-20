@@ -7,6 +7,11 @@
   font-family: "Roboto", sans-serif !important;
 }
 
+/* Rounded Favicon */
+link[rel="icon"] {
+  border-radius: 50%;
+}
+
 /* Custom Animations */
 @keyframes fadeInUp {
   from {
