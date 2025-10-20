@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
-    <footer className="pt-10 bg-gradient-to-br from-pink-50 via-white to-pink-50">
-      <div className="max-w-4xl mx-auto text-center">
+    <footer className="pt-10 bg-gradient-to-br bg-[#fbcfe8]">
+      <div className="max-w-4xl mx-auto text-center ">
         {/* Main Message */}
         <div className="mb-8 animate-fade-in-up">
           <h2
@@ -14,8 +14,14 @@ const Footer = () => {
           >
             Chúc mừng ngày Phụ nữ Việt Nam 20/10!
           </h2>
-          <p className="text-lg md:text-xl text-purple-600" style={{ fontFamily: "Roboto, sans-serif" }}>
-            Từ cộng đồng HCM UTE Research on Technology and Innovation Club 
+          <p
+            onClick={() => {
+              window.open("https://www.facebook.com/hcmute.rtic", "_blank");
+            }}
+            className="text-lg md:text-xl text-purple-600 cursor hover:text-purple-900 cursor-pointer"
+            style={{ fontFamily: "Roboto, sans-serif" }}
+          >
+            Từ cộng đồng HCM UTE Research on Technology and Innovation Club
           </p>
         </div>
 
@@ -45,7 +51,7 @@ const Footer = () => {
       </div>
 
       {/* Copyright */}
-      <div className="text-center mt-8 py-5 border-t border-gray-200 bg-[#fcd0e9]">
+      <div className="text-center mt-8 py-5 border-t border-gray-300 bg-[#fbcfe8]">
         <p
           className="text-sm font-medium"
           style={{

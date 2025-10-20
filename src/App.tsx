@@ -5,6 +5,7 @@ import ScrollProgress from "./components/LoadingProgress";
 import "./App.css";
 import Header from "./layout/Header";
 import { useEffect, useState } from "react";
+import LoveLetter from "./components/LoveLetter";
 
 // Heart component for decorative hearts
 const HeartIcon = ({ color, delay, index }: { color: string; delay: number; index: number }) => (
@@ -25,6 +26,7 @@ const HeartIcon = ({ color, delay, index }: { color: string; delay: number; inde
 const App = () => {
   const [headerHeight, setHeaderHeight] = useState(0);
   const [showScrollProgress, setShowScrollProgress] = useState(false);
+  const [showLetter, setShowLetter] = useState(false);
 
   // Function to calculate header height dynamically
   const calculateHeaderHeight = () => {
@@ -44,11 +46,12 @@ const App = () => {
 
   // Show scroll progress after splash screen
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const handler = () => {
       setShowScrollProgress(true);
-    }, 5500); // 5 seconds splash + 500ms fade out
-
-    return () => clearTimeout(timer);
+      setShowLetter(true);
+    };
+    window.addEventListener("splash:done", handler);
+    return () => window.removeEventListener("splash:done", handler);
   }, []);
 
   // Heart data for decorative hearts
@@ -64,6 +67,19 @@ const App = () => {
       <SplashScreen />
       {showScrollProgress && <ScrollProgress />}
       <Header />
+      {showLetter && (
+        <LoveLetter
+          title="Gửi em"
+          message={`Gửi đến tất cả những người phụ nữ tuyệt vời ✨
+Chúc các chị, các mẹ, và các bạn gái một ngày 20/10 thật nhiều niềm vui, hạnh phúc và yêu thương.
+Cảm ơn vì sự dịu dàng, mạnh mẽ và những hy sinh thầm lặng mà mọi người đã mang đến cho cuộc sống này.
+Chúc mọi người luôn xinh đẹp, tự tin và thành công trong hành trình của chính mình — không chỉ hôm nay, mà là mỗi ngày trong năm. 💐`}
+          fromText="From HCM UTE Research on Technology and Innovation Club"
+          appearDelayMs={0}
+          appearDurationMs={2000}
+          onClose={() => setShowLetter(false)}
+        />
+      )}
 
       {/* Main Content */}
       <main style={{ paddingTop: `${headerHeight + 20}px` }}>
@@ -73,14 +89,43 @@ const App = () => {
             {/* Date Banner */}
             <div className="flex items-center justify-center gap-4 animate-fade-in-up">
               <div className="bg-white flex items-center justify-center gap-2 rounded-full p-3 border-2 border-pink-300">
-                <div className="w-6 h-6 rounded flex items-center justify-center animate-pulse" style={{ backgroundColor: "rgb(233, 30, 99)" }}>
-                  <span className="text-white text-sm">🎁</span>
+                <div className="w-6 h-6 flex items-center justify-center animate-pulse">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="w-6 h-6 text-pink-600"
+                  >
+                    <path d="M3 8m0 1a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1z" />
+                    <path d="M12 8l0 13" />
+                    <path d="M19 12v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-7" />
+                    <path d="M7.5 8a2.5 2.5 0 0 1 0 -5a4.8 8 0 0 1 4.5 5a4.8 8 0 0 1 4.5 -5a2.5 2.5 0 0 1 0 5" />
+                  </svg>
                 </div>
+
                 <span className="font-medium text-xl " style={{ color: "rgb(60, 60, 60)", fontFamily: "Roboto, sans-serif" }}>
                   20/10/2025
                 </span>
-                <div className="w-6 h-6 rounded flex items-center justify-center animate-pulse" style={{ backgroundColor: "rgb(233, 30, 99)" }}>
-                  <span className="text-white text-sm">🎁</span>
+                <div className="w-6 h-6 flex items-center justify-center animate-pulse">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="w-6 h-6 text-pink-600"
+                  >
+                    <path d="M3 8m0 1a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1z" />
+                    <path d="M12 8l0 13" />
+                    <path d="M19 12v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-7" />
+                    <path d="M7.5 8a2.5 2.5 0 0 1 0 -5a4.8 8 0 0 1 4.5 5a4.8 8 0 0 1 4.5 -5a2.5 2.5 0 0 1 0 5" />
+                  </svg>
                 </div>
               </div>
             </div>
@@ -134,142 +179,13 @@ const App = () => {
             </div>
 
             {/* Call-to-Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 animate-fade-in-up" style={{ animationDelay: "0.8s" }}>
-              {/* Join Community Button */}
-              <button
-                className="group text-white px-10 py-5 rounded-full font-bold text-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-3 hover:scale-105 cursor-pointer"
-                style={{ background: "linear-gradient(135deg, #E53E3E, #805AD5)" }}
-                onClick={() => window.open("https://www.facebook.com/hcmute.rtic", "_blank")}
-              >
-                <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
-                  <span className="text-sm">👥</span>
-                </div>
-                Tham gia cộng đồng
-              </button>
-
-              {/* Explore Project Button */}
-              <button
-                className="group bg-white border-2 px-10 py-5 rounded-full font-bold text-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-3 hover:scale-105 cursor-pointer"
-                style={{ borderColor: "#D53F8C", color: "#D53F8C", backgroundColor: "rgba(213, 63, 140, 0.05)" }}
-                onClick={() => window.open("https://hcmutertic.com/#project", "_blank")}
-              >
-                <div
-                  className="w-6 h-6 rounded flex items-center justify-center group-hover:rotate-12 transition-transform duration-300"
-                  style={{ backgroundColor: "rgba(213, 63, 140, 0.1)" }}
-                >
-                  <span className="text-sm font-mono" style={{ color: "#D53F8C" }}>{`</>`}</span>
-                </div>
-                Khám phá dự án
-              </button>
-            </div>
           </div>
         </div>
 
         {/* Women in Tech Section */}
-        <section className="py-10 px-4 bg-gradient-to-br from-white via-pink-50 to-purple-50">
-          <div className="max-w-6xl mx-auto">
-            {/* Flex Container for all content */}
-            <div className="flex flex-col items-center justify-center space-y-12 text-center">
-              {/* Achievement Badge */}
-              <div className="animate-fade-in-up">
-                <div className="bg-pink-500 text-white px-6 py-2 rounded-full text-sm font-semibold flex items-center gap-2 animate-gentle-pulse">
-                  <span className="animate-gentle-rotate">✨</span>
-                  <span>Những thành tựu đáng tự hào</span>
-                </div>
-              </div>
-
-              {/* Main Title */}
-              <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-                <h2 className="text-5xl md:text-6xl font-bold mb-6 flex flex-col gap-5" style={{ fontFamily: "Roboto, sans-serif" }}>
-                  <span className="block text-gray-800 animate-gentle-float">Phụ nữ trong</span>
-                  <span
-                    className="block bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent pb-5 animate-gentle-pulse"
-                    style={{ fontFamily: "Roboto, sans-serif" }}
-                  >
-                    Công nghệ
-                  </span>
-                </h2>
-                <p
-                  className="text-xl text-gray-600 max-w-3xl mx-auto animate-gentle-float"
-                  style={{ fontFamily: "Roboto, sans-serif", animationDelay: "0.5s" }}
-                >
-                  Từ những nhà phát triển tài năng đến những lãnh đạo đầy cảm hứng
-                </p>
-              </div>
-
-              {/* Cards Grid */}
-              <div className="grid md:grid-cols-3 gap-8 animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
-                {/* Tech Innovators Card */}
-                <div
-                  className="bg-gradient-to-br from-pink-50 to-rose-100 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border-2 border-pink-300 hover:border-pink-400 cursor-pointer animate-gentle-float"
-                  onClick={() => window.open("https://github.com", "_blank")}
-                  style={{ animationDelay: "0.6s" }}
-                >
-                  <div className="flex justify-center mb-8">
-                    <div className="w-20 h-20 bg-gradient-to-br from-pink-400 to-pink-600 rounded-2xl flex items-center justify-center shadow-lg animate-gentle-pulse">
-                      <span className="text-white text-3xl font-mono">{`</>`}</span>
-                    </div>
-                  </div>
-                  <div className="text-center">
-                    <h3 className="text-2xl font-bold text-gray-700 mb-4 animate-gentle-pulse" style={{ fontFamily: "Roboto, sans-serif" }}>
-                      Tech Innovators
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed text-sm" style={{ fontFamily: "Roboto, sans-serif" }}>
-                      Phụ nữ trong công nghệ đang tạo ra những đột phá vượt bậc
-                    </p>
-                  </div>
-                </div>
-
-                {/* Community Leaders Card */}
-                <div
-                  className="bg-gradient-to-br from-purple-50 to-violet-100 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border-2 border-purple-300 hover:border-purple-400 cursor-pointer animate-gentle-float"
-                  onClick={() => window.open("https://www.facebook.com/hcmute.rtic", "_blank")}
-                  style={{ animationDelay: "0.8s" }}
-                >
-                  <div className="flex justify-center mb-8">
-                    <div className="w-20 h-20 bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg animate-gentle-pulse">
-                      <span className="text-white text-3xl">👥</span>
-                    </div>
-                  </div>
-                  <div className="text-center">
-                    <h3 className="text-2xl font-bold text-gray-700 mb-4 animate-gentle-pulse" style={{ fontFamily: "Roboto, sans-serif" }}>
-                      Community Leaders
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed text-sm" style={{ fontFamily: "Roboto, sans-serif" }}>
-                      Dẫn dắt và truyền cảm hứng cho thế hệ trẻ
-                    </p>
-                  </div>
-                </div>
-
-                {/* Future Builders Card */}
-                <div
-                  className="bg-gradient-to-br from-blue-50 to-cyan-100 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border-2 border-blue-300 hover:border-blue-400 cursor-pointer animate-gentle-float"
-                  onClick={() => window.open("https://www.linkedin.com", "_blank")}
-                  style={{ animationDelay: "1s" }}
-                >
-                  <div className="flex justify-center mb-8">
-                    <div className="w-20 h-20 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg animate-gentle-pulse">
-                      <span className="text-white text-3xl">🚀</span>
-                    </div>
-                  </div>
-                  <div className="text-center">
-                    <h3 className="text-2xl font-bold text-gray-700 mb-4 animate-gentle-pulse" style={{ fontFamily: "Roboto, sans-serif" }}>
-                      Future Builders
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed text-sm" style={{ fontFamily: "Roboto, sans-serif" }}>
-                      Xây dựng tương lai với sự sáng tạo và đam mê
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
+      
         {/* Inspirational Slide Section */}
         <InspirationalSlide />
-
-       
       </main>
 
       {/* Footer */}

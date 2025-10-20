@@ -1,1 +1,43 @@
 @import "tailwindcss";
+html,
+body {
+  -ms-overflow-style: none; /* IE and old Edge */
+  scrollbar-width: none; /* Firefox */
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+@keyframes gentle-float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.float-card {
+  animation: gentle-float 5s ease-in-out infinite;
+}
+.float-card {
+  will-change: transform;
+}
+.float-card:hover {
+  animation-play-state: paused;
+}
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.pop-in {
+  animation: pop-in 300ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}

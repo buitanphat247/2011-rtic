@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import reactLogo from '../assets/icon.png';
 
 const SplashScreen = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -13,6 +14,8 @@ const SplashScreen = () => {
           // Hide splash after completion
           setTimeout(() => {
             setIsVisible(false);
+            // thông báo Splash hoàn tất
+            window.dispatchEvent(new CustomEvent('splash:done'));
           }, 500);
           return 100;
         }
@@ -38,8 +41,8 @@ const SplashScreen = () => {
       <div className="relative z-10 text-center">
         {/* Logo/Icon */}
         <div className="mb-8 animate-bounce">
-          <div className="w-24 h-24 mx-auto bg-white/90 rounded-3xl flex items-center justify-center shadow-2xl">
-            <span className="text-4xl">🎉</span>
+          <div className="w-32 h-32 mx-auto bg-white/90 rounded-3xl flex items-center justify-center shadow-2xl">
+            <img src={reactLogo} alt="logo" className="w-24 h-24" />
           </div>
         </div>
 

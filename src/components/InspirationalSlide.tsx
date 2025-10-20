@@ -5,29 +5,49 @@ const InspirationalSlide = () => {
   const slides = [
     {
       id: 1,
-      title: "Lời chúc",
-      subtitle: "Đầy cảm hứng",
-      quote: "Mỗi dòng code chúng ta viết đều là một bước tiến\n trong hành trình thay đổi thế giới.",
-      author: "Female Developers"
+      title: "Phụ nữ",
+      subtitle: "Kiên cường & Xinh đẹp",
+      quote:
+        "Cho dù mình ở tuổi nào, mình vẫn cứ lao động. Mỗi ngày mình như con rùa, bò một chút sẽ đến đích.\nCác chị đừng bao giờ nghĩ mình già cả. Người phụ nữ ở độ tuổi nào cũng đẹp, rất là đẹp.",
+      author: "Diva Mỹ Linh",
     },
     {
       id: 2,
-      title: "Sức mạnh",
-      subtitle: "Phụ nữ",
-      quote: "Chúng ta không chỉ viết code, chúng ta tạo ra tương lai\n và định hình thế giới công nghệ.",
-      author: "Tech Leaders"
+      title: "Dám",
+      subtitle: "Mạo hiểm & Dấn thân",
+      quote:
+        "Tôi luôn muốn sự chọn lựa của mình phải ngày càng thú vị và độc đáo,\nvà để làm được điều đó thì phải có chữ “dám”: dám dấn thân, dám mạo hiểm, không sợ thất bại.",
+      author: "NSND Lê Khanh",
     },
     {
       id: 3,
-      title: "Tương lai",
-      subtitle: "Sáng tạo",
-      quote: "Mỗi ý tưởng mới là một cơ hội để thay đổi\n và làm cho thế giới tốt đẹp hơn.",
-      author: "Innovators"
-    }
+      title: "Tự hào",
+      subtitle: "Phụ nữ Việt Nam",
+      quote:
+        "Non sông gấm vóc Việt Nam do phụ nữ ta, trẻ cũng như già,\nra sức dệt thêu mà thêm tốt đẹp, rực rỡ.",
+      author: "Chủ tịch Hồ Chí Minh",
+    },
+    {
+      id: 4,
+      title: "Yêu",
+      subtitle: "Chính mình",
+      quote:
+        "Chỉ có yêu bản thân thì mình mới có thể yêu người khác.\nNgười phụ nữ độc lập, yêu bản thân sẽ có thể dành cả trái tim và lý trí để yêu thương,\ntrong khi vẫn để người khác tự do sống là chính họ.",
+      author: "Giang Ơi – Nhà sáng tạo nội dung",
+    },
+    {
+      id: 5,
+      title: "20/10",
+      subtitle: "Rạng rỡ & Hạnh phúc",
+      quote:
+        "Chúc bạn một ngày 20/10 rạng rỡ!\nHãy luôn là phiên bản tốt nhất, độc lập, xinh đẹp và hạnh phúc nhất của chính mình.\nBạn xứng đáng được yêu thương và trân trọng!",
+      author: "💐 Lời chúc 20/10",
+    },
   ];
+  
 
   return (
-    <section className="py-10 px-4 relative overflow-hidden" style={{ backgroundColor: '#fcd0e9' }}>
+    <section className="py-10 px-4 relative overflow-hidden" style={{ backgroundColor: '#ffffff' }}>
       {/* Background Decoration */}
       <div className="absolute bottom-0 left-0 opacity-10">
         <div className="w-32 h-32 rounded-full bg-pink-300 transform rotate-45"></div>
