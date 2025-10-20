@@ -22,7 +22,7 @@ const LoveLetter = ({
   const [isOpen, setIsOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [typed, setTyped] = useState("");
-  const [cardIn, setCardIn] = useState(false);
+  // removed unused cardIn to fix TS6133
   const [float, setFloat] = useState(false);
   const [modalIn, setModalIn] = useState(false);
   const full = useMemo(() => message, [message]);
@@ -40,13 +40,7 @@ const LoveLetter = ({
     return () => { if (timerRef.current) clearTimeout(timerRef.current); };
   }, [isOpen, full]);
 
-  // animate closed card on mount and whenever modal closes
-  useEffect(() => {
-    if (isOpen) return;
-    setCardIn(false);
-    const id = requestAnimationFrame(() => setCardIn(true));
-    return () => cancelAnimationFrame(id);
-  }, [isOpen]);
+  // no-op: previously used for card mount animation
 
   // animate modal appear
   useEffect(() => {
