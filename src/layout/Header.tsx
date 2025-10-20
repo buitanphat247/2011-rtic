@@ -24,7 +24,12 @@ const Header = () => {
             Chúc mừng ngày Phụ nữ Việt Nam! 💖
           </p>
         </div>
-        <div className="hidden lg:flex gap-4 opacity-70">
+        <div
+          className="hidden lg:flex gap-4 opacity-70 cursor-pointer"
+          onClick={() => {
+            window.open("https://www.facebook.com/hcmute.rtic", "_blank");
+          }}
+        >
           <img src={logo} alt="logo" className="w-24 h-24" />
         </div>
       </div>
