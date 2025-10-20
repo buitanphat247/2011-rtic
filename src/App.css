@@ -310,41 +310,13 @@ body {
   transform: scale(1.2);
 }
 
-/* Animated Border Effect */
+/* Simple Border Effect */
 .quote-card {
   position: relative;
   overflow: hidden;
   animation: strong-float 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
-.quote-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  border: 3px solid #ec4899;
   border-radius: 24px;
-  padding: 2px;
-  background: linear-gradient(45deg, #ec4899, #8b5cf6, #ec4899, #f59e0b, #ec4899);
-  background-size: 200% 200%;
-  animation: gradient-border 6s ease-in-out infinite;
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-}
-
-@keyframes gradient-border {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
 }
 
 /* Smooth Float Animation */
