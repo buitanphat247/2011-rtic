@@ -41,7 +41,7 @@ Landing page đặc biệt chúc mừng Ngày Phụ nữ Việt Nam 20/10/2025, 
 
 ## 🌐 Live Demo
 
-🔗 **Deploy tại:** [https://project-landingpage-2010.vercel.app](https://project-landingpage-2010.vercel.app)
+🔗 **Deploy tại:** [https://2010-rtic.vercel.app/](https://2010-rtic.vercel.app/)
 
 ## ✨ Tính năng
 
